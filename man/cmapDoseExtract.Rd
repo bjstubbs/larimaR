@@ -14,7 +14,7 @@ cmapDoseExtract(cell, pert, sigInfo, gctxFile, phase = 3)
 \item{sigInfo}{data for the gctx file to subset}
 }
 \value{
-a list of dataframes cellsxgenesxperturbations
+dataframe of genesxperturbations
 }
 \description{
 Function to generate data list from metadata objects

@@ -3,7 +3,7 @@ Title: Data Resources for Lincs Analysis
 Version: 0.9.1
 Author: BJ Stubbs <benjamin,stubbs@tufts.edu>
 Description: R package to explore connectivity map data
-Maintainer: BJ Stubbs <benjamin,stubbs@tufts.edu>
+Maintainer: BJ Stubbs <benjamin.stubbs@tufts.edu>
 Depends: R (>= 4.0.0), rhdf5, HDF5Array
 Suggests: knitr, BiocStyle, testthat, rmarkdown, shiny
 License: Artistic-2.0
