@@ -238,13 +238,13 @@ plotCmapDosage<-function(dataOb){
     y = ~viability, color=~dosageTime, symbol=~phase,text=~text,
     type="scatter", mode="markers",
      marker = list(size = 20)
-  )%>%layout(title = paste('Viability vs Dose:',dataOb$pertName))
+  )%>%layout(title = list(text=paste('Viability vs Dose:',dataOb$pertName),y=.9),font=list(size = 18))
 
   times=unique(mydat$dosageTime)
   for(i in 1:length(times)){
     temp=mydat[mydat$dosageTime==times[i],]
     tlm=lm(viability~dosageAmt,data=temp)
-    fig=fig%>%add_lines(x= ~dosageAmt, y = fitted(tlm),data=temp)
+    fig=fig%>%add_lines(x= ~dosageAmt, y = fitted(tlm),data=temp,line=list(width=4))
   }
   fig
 }

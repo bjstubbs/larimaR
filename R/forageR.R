@@ -9,7 +9,7 @@
 #'@import shiny
 #'@export
 runforageRCell<-function(){
-	myfile=system.file(package="forageR","shinyApps/forageRAppCell.R")
+	myfile=system.file(package="larimaR","shinyApps/forageRAppCell.R")
 	source(myfile)
 	forageRCell()
 }
@@ -18,7 +18,7 @@ runforageRCell<-function(){
 #'@import shiny
 #'@export
 runforageRPert<-function(){
-	myfile=system.file(package="forageR","shinyApps/forageRAppPert.R")
+	myfile=system.file(package="larimaR","shinyApps/forageRAppPert.R")
 	source(myfile)
 	forageRPert()
 }
