@@ -5,6 +5,8 @@
 \title{Function to generate data list from metadata objects}
 \usage{
 cmapRdataExtract(cellDF, pertDF, sigInfoFile, gctxFile, phase = 3)
+
+cmapRdataExtract(cellDF, pertDF, sigInfoFile, gctxFile, phase = 3)
 }
 \arguments{
 \item{cellDF}{dataframe subset of cmap cell data}
@@ -14,10 +16,16 @@ cmapRdataExtract(cellDF, pertDF, sigInfoFile, gctxFile, phase = 3)
 \item{gctxFile}{filepath for a gctx file to subset}
 
 \item{phase}{which phase of data are we using}
+
+\item{cellName}{dataframe subset of cmap cell data}
 }
 \value{
+a list of dataframes cellsxgenesxperturbations
+
 a list of dataframes cellsxgenesxperturbations
 }
 \description{
 Function to generate data list from metadata objects
+
+Function to isolate top and bottom perturbagens for a particular gene and cell
 }
