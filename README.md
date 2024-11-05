@@ -162,7 +162,7 @@ We can also view histograms and boxplots in reference to a perturbagen class ext
 cmapBoxPlot("extreme.rda",mtorFile,gene="EGFR")
 ```
 
-![githubextremeBox](https://github.com/user-attachments/assets/24ff1006-7e79-4537-b6aa-7587c5633d77)
+![githubextremeBox](https://github.com/user-attachments/assets/28b9ab96-7734-4d50-84be-61a2306b2306)
 
 
 ```{}
