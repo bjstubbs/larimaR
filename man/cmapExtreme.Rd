@@ -16,7 +16,7 @@ cmapExtreme(cellName, geneName, sigInfoFile, gctxFile, phase = 3)
 \item{phase}{which phase of data are we using}
 }
 \value{
-a list of dataframes cellsxgenesxperturbations
+dataframe of perturbationsxgene
 }
 \description{
 Function to isolate top and bottom perturbagens for a particular gene and cell
