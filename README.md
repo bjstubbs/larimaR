@@ -78,6 +78,43 @@ print(brds)
  [1] "BRD-K84937637" "BRD-A79768653" "BRD-A50287119" "BRD-A23770159"
  [5] "BRD-K89626439" "BRD-K99369265"
 
+We can then extract the data for this pertubagens and cell combination and compute estimated cell viability
+
+```{}
+res3=getDosagePipeline(
+      pertName="sirolimus",
+      sigInfo=sigInfo3,
+      gctxFileLocation=gctxFile3,
+      cell="A549",
+      curphase=3
+    )
+```
+
+```{
+> str(res3,1)
+List of 7
+ $ pertName: chr "sirolimus"
+ $ broadIDS: chr [1:6] "BRD-K84937637" "BRD-A79768653" "BRD-A50287119" "BRD-A23770159" ...
+ $ cell    : chr "A549"
+ $ expData : num [1:978, 1:94] 3.6051 -0.0129 0.6425 1.256 -3.1856 ...
+  ..- attr(*, "dimnames")=List of 2
+ $ dosages :List of 376
+  ..- attr(*, "dim")= int [1:2] 4 94
+  ..- attr(*, "dimnames")=List of 2
+ $ achilles: Named num [1:94] -1.48 -1 -1.03 -1.12 -1.5 ...
+  ..- attr(*, "names")= chr [1:94] "RAD001_A549_6H:BRD-K84937637-001-03-2:10" "RAD001_A549_6H:BRD-K84937637-001-03-2:0.0046" "RAD001_A549_6H:BRD-K84937637-001-03-2:0.0015" "RAD001_A549_6H:BRD-K84937637-001-03-2:3.3333" ...
+ $ phase   : num [1:94] 3 3 3 3 3 3 3 3 3 3 ...
+
+```
+
+And plot the current extract in relation to estimated cell viability
+
+```{}
+ plotCmapDosage(res3)
+```
+
+![githubViab](https://github.com/user-attachments/assets/c9d3158b-ffc1-4945-9762-22d74c30788d)
+
 
 ## Extreme Response Demo
 
