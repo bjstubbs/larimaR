@@ -84,6 +84,7 @@ print(brds)
 We can use the shiny apps above to generate a list of MTOR inhibitors in our data. We can take the csv that comes from the app as an input in our tables and 
 visualizations
 
+```{}
 > inh[1:10,]
          pert_id   cmap_name target                                moa
 1  BRD-A50998626 palomid-529   MTOR                      Akt inhibitor
@@ -118,7 +119,7 @@ visualizations
 8  YEAHTLOYHVWAKW-UHFFFAOYSA-N      PALOMID-529
 9  YEAHTLOYHVWAKW-UHFFFAOYSA-N      PALOMID-529
 10 CZQHHVNHHHRRDU-UHFFFAOYSA-N                 
-
+```
 
 
 The cmapExtreme function extracts the data for a particular gene across all perturbagens in a cell.
@@ -155,4 +156,17 @@ cmapDT("extreme.rda",mtorFile,inhibit=FALSE,subClass="MTOR",gene="EGFR")
 
 
 
+We can also view histograms and boxplots in reference to a perturbagen class extracted above
+
+```{}
+cmapBoxPlot("extreme.rda",mtorFile,gene="EGFR")
+```
+
+![githubextremeBox](https://github.com/user-attachments/assets/24ff1006-7e79-4537-b6aa-7587c5633d77)
+
+
+```{}
+cmapHistPlot("extreme.rda",mtorFile,gene="EGFR")
+```
+![githubextremeHist](https://github.com/user-attachments/assets/47500232-28c1-4168-a62e-9fd147b08aa3)
 
