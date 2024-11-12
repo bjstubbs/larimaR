@@ -29,8 +29,8 @@ runCmapCellFilter(cellFile) and runCmapPertFilter(pertFile)
 
 These functions use the files downloaded above, and can be useful to choose a pertubagen and cell of interest.
 
-```{}
-dataDir="/home/bj/Research/data"
+```{r}
+dataDir="/Research/data"
 cellFile="cellinfo_beta.txt"
 runCmapCellFilter(cellFile)
 ```
@@ -58,8 +58,8 @@ This function takes in a number of parameters:
 
 Then we can set our file locations:
 
-```{}
-dataDir="/home/bj/Research/data"
+```{r}
+dataDir="/Research/data"
 sigInfo3=read.csv(paste0(dataDir,"/siginfo_beta.txt"),sep="\t")
 sigInfoFile=paste0(dataDir,"/siginfo_beta.txt")
 compounds=read.csv(paste0(dataDir,"/compoundinfo_beta.txt"),sep="\t")
@@ -69,7 +69,7 @@ gctxFile3=paste0(dataDir,"/level5_beta_trt_cp_n720216x12328.gctx")
 
 LarimaR has tools to look up internal identfiers using common names:
 
-```{
+```{r}
 library(DT)
 brds=getBRDS("sirolimus",sigInfo3)
 print(brds)
@@ -80,7 +80,7 @@ print(brds)
 
 We can then extract the data for this pertubagens and cell combination and compute estimated cell viability
 
-```{}
+```{r}
 res3=getDosagePipeline(
       pertName="sirolimus",
       sigInfo=sigInfo3,
@@ -109,7 +109,7 @@ List of 7
 
 And plot the current extract in relation to estimated cell viability
 
-```{}
+```{r}
  plotCmapDosage(res3)
 ```
 
@@ -121,7 +121,7 @@ And plot the current extract in relation to estimated cell viability
 We can use the shiny apps above to generate a list of MTOR inhibitors in our data. We can take the csv that comes from the app as an input in our tables and 
 visualizations
 
-```{}
+```{r}
 > inh[1:10,]
          pert_id   cmap_name target                                moa
 1  BRD-A50998626 palomid-529   MTOR                      Akt inhibitor
@@ -169,7 +169,7 @@ The cmapExtreme function extracts the data for a particular gene across all pert
 * ' @return a list of dataframes cellsxgenesxperturbations
 * ' @export
 
-```{}
+```{r}
 extreme=cmapExtreme(cellName="A549",
     geneName="EGFR",
     sigInfoFile=sigInfoFile,
@@ -183,7 +183,7 @@ We can then view a truncated Data table in reference to a perturbagen class extr
 
 
 
-```{}
+```{r}
 mtorFile="mtor2024-08-12.csv"
 cmapDT("extreme.rda",mtorFile,inhibit=FALSE,subClass="MTOR",gene="EGFR") 
 ```
@@ -195,14 +195,14 @@ cmapDT("extreme.rda",mtorFile,inhibit=FALSE,subClass="MTOR",gene="EGFR")
 
 We can also view histograms and boxplots in reference to a perturbagen class extracted above
 
-```{}
+```{r}
 cmapBoxPlot("extreme.rda",mtorFile,gene="EGFR")
 ```
 
 ![githubextremeBox](https://github.com/user-attachments/assets/28b9ab96-7734-4d50-84be-61a2306b2306)
 
 
-```{}
+```{r}
 cmapHistPlot("extreme.rda",mtorFile,gene="EGFR")
 ```
 ![githubextremeHist](https://github.com/user-attachments/assets/47500232-28c1-4168-a62e-9fd147b08aa3)
