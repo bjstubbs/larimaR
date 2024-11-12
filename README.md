@@ -90,7 +90,7 @@ res3=getDosagePipeline(
     )
 ```
 
-```{
+```R
 > str(res3,1)
 List of 7
  $ pertName: chr "sirolimus"
