@@ -35,7 +35,9 @@ cellFile="cellinfo_beta.txt"
 runCmapCellFilter(paste0(dataDir,"/",cellFile))
 ```
 
+Click "reset" to load all of the data for filtering.
 
+You should see something like:
 
 ![cellfilter](inst/figs/cellFilter.png)
 
