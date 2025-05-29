@@ -43,7 +43,7 @@ You should see something like:
 
 Using this, we can search for lung related cells and export a csv
 
-Similarly, we can use the pertunagen seaech tool to find mtor inhibitors and export a csv of perturbagens.
+Similarly, we can use the pertunagen search tool to find mtor inhibitors and export a csv of perturbagens.
 
 
 ## Export data
