@@ -37,7 +37,7 @@ runCmapCellFilter(paste0(dataDir,"/",cellFile))
 
 
 
-![cellfilter](inst/cellFilter.png)
+![cellfilter](inst/figs/cellFilter.png)
 
 Using this, we can search for lung related cells and export a csv
 
