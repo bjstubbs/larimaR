@@ -202,6 +202,15 @@ and merged with the metadata from the siginfo file
   save(extreme,file=fname)
 ```
 
+We can load this extract to view the expression of a gene of interest as a function
+of an inhibitor or enhancer.
+
+Here:
+
+* mtorFile is an extract of mtor inhibitors from above
+* A375 File contains EGFR expression values from the A375 Cell
+
+
 ```R
 mtorFile=paste(path.package("larimaR"),"/mtor2024-08-12.csv",sep="")
 A375File=paste(path.package("larimaR"),"/A549-EGFR.rda",sep="")
