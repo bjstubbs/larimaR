@@ -185,18 +185,22 @@ Consider the data extract for A375-EGFR presented in the "inst" directory
 
 This file was extracted using the code:
 
+```R
 extreme=cmapExtreme(cellName="A549",
     geneName=gene,
     sigInfoFile=sigInfoFile,
     gctxFile=gctxFile,
     phase=3
   )
+```
 
 and merged with the metadata from the siginfo file
 
+```R
   extreme=merge(extreme,sigInfo,by="sig_id")
   fname=paste0("A549-",gene,".rda")
   save(extreme,file=fname)
+```
 
 ```R
 mtorFile=paste(path.package("larimaR"),"/mtor2024-08-12.csv",sep="")
