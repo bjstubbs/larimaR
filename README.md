@@ -23,7 +23,7 @@ Download the following files:
 
 ## Search for cells/pertunagens with shiny apps
 
-LarimaR comes with 2 shiny based filter apps based on cell and perturbagen data
+LarimaR comes with 2 Shiny based filter apps based on cell and perturbagen data
 
 runCmapCellFilter(cellFile) and runCmapPertFilter(pertFile)
 
@@ -35,7 +35,7 @@ cellFile="cellinfo_beta.txt"
 runCmapCellFilter(paste0(dataDir,"/",cellFile))
 ```
 
-Click "reset" to load all of the data for filtering.
+Click "Reset" to load all of the data for filtering.
 
 You should see something like:
 
