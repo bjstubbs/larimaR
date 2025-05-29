@@ -1,6 +1,6 @@
 Package: larimaR
 Title: Data Resources for Lincs Analysis
-Version: 1.0.1y
+Version: 1.0.1
 Author: BJ Stubbs <benjamin,stubbs@tufts.edu>
 Description: R package to explore connectivity map data
 Maintainer: BJ Stubbs <benjamin.stubbs@tufts.edu>
