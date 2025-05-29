@@ -212,13 +212,13 @@ cmapDT(A375File,mtorFile,inhibit=FALSE,subClass="MTOR",gene="EGFR")
 We can also view histograms and boxplots in reference to a perturbagen class extracted above
 
 ```R
-cmapBoxPlot("extreme.rda",mtorFile,gene="EGFR")
+cmapBoxPlot(A375File,mtorFile,gene="EGFR")
 ```
 
 ![githubextremeBox](inst/figs/extremeBox.png)
 
 
 ```R
-cmapHistPlot("extreme.rda",mtorFile,gene="EGFR")
+cmapHistPlot(A375File,mtorFile,gene="EGFR")
 ```
 ![githubextremeHist](inst/figs/extremeHist.png)
