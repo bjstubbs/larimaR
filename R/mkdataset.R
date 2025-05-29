@@ -119,3 +119,95 @@ cmapExtreme<-function(cellName,geneName,sigInfoFile,gctxFile,phase=3){
 
   temp
 }
+
+
+#' Function to plot a histogram of pertubagen class
+#' @param expFile name of cmap extreme data export
+#' @param pertFile pertubagen export csv
+#' @param subClass subset of pertubagen file to keep
+#' @return plotly plot
+#' @export
+cmapHistPlot<-function(expFile,pertFile,subClass=NA,geneName){
+  require(plotly)
+  t2 <- list(
+    size = 24,
+    color = "black"
+  )
+  load(expFile)
+  expDF=extreme
+  pertDF=read.csv(pertFile,stringsAsFactors=FALSE)
+  if(!is.na(subClass)){pertDF=pertDF[pertDF$target==subClass,]}
+  pertNames=unique(pertDF$cmap_name)
+  gene=geneName
+  expDF$inPert=expDF$cmap_name%in%pertNames
+  fig=plot_ly(data = expDF, x = expDF[[gene]],
+    type="histogram",histnorm="probability",color=~inPert,colors=c("blue","red"))%>%layout(
+        title = list(text=paste0("<br><br>",gene)),
+        font=t2,
+        xaxis = list(title = list(text ='Normalized Expression', font = t2)),
+        legend=list(font=t2,
+          title=list(text=paste("Target:Subclass<br>",pertFile,":",subClass))
+        )
+    )
+    fig
+}
+
+#' Function to plot a boxplot of pertubagen class
+#' @return plotly plot
+#' @export
+cmapBoxPlot<-function(expFile,pertFile,geneName){
+  require(plotly)
+  t2 <- list(
+    size = 24,
+    color = "black"
+  )
+  load(expFile)
+  expDF=extreme
+  gene=geneName
+  pertDF=read.csv(pertFile,stringsAsFactors=FALSE)
+  pertTargets=unique(pertDF$target)
+
+  #get first bar data
+  tempPert=pertDF[pertDF$target==pertTargets[1],]
+  tempPertNames=unique(tempPert$cmap_name)
+  expFiltered=expDF[expDF$cmap_name%in%tempPertNames,]
+  temp=expFiltered[[gene]]
+
+  fig=plot_ly(y = temp,
+    type="box",name=pertTargets[1])
+
+  #get rest
+  for(i in 2:length(pertTargets)){
+    tempPert=pertDF[pertDF$target==pertTargets[i],]
+    tempPertNames=unique(tempPert$cmap_name)
+    expFiltered=expDF[expDF$cmap_name%in%tempPertNames,]
+    temp=expFiltered[[gene]]
+    fig=fig%>%add_trace(y = temp,
+      type="box",name=pertTargets[i])
+  }
+  fig=fig%>%layout(
+    legend=list(font=t2,
+      title=list(text="Target")
+    ),
+  yaxis = list(title = list(text =paste('Normalized Expression:',gene), font = t2))
+)
+  fig
+}
+
+#' Function to return a datatable of pertubagen class
+#' @param inhibit is the direction to sort the table
+#' @param keep is the nmber of results to display
+#' @return datatable
+#' @export
+cmapDT<-function(expFile,pertFile,inhibit=FALSE,keep=100,filterPert=TRUE,subClass=NA,geneName){
+  require(DT)
+  load(expFile)
+  expDF=extreme
+  pertDF=read.csv(pertFile,stringsAsFactors=FALSE)
+  if(!is.na(subClass)){pertDF=pertDF[pertDF$target==subClass,]}
+  pertNames=unique(pertDF$cmap_name)
+  gene=geneName
+  expDF$inPert=expDF$cmap_name%in%pertNames
+  if(filterPert || !is.na(subClass)){expDF=expDF[expDF$inPert,]}
+  datatable(expDF[order(expDF[[gene]],decreasing=!inhibit),][1:keep,])
+}

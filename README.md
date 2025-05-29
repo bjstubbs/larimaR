@@ -32,12 +32,12 @@ These functions use the files downloaded above, and can be useful to choose a pe
 ```R
 dataDir="/Research/data"
 cellFile="cellinfo_beta.txt"
-runCmapCellFilter(cellFile)
+runCmapCellFilter(paste0(dataDir,"/",cellFile))
 ```
 
 
 
-![cellfilter](https://github.com/user-attachments/assets/7717015e-494e-4fcb-9a64-5f9ce1fd0ef7)
+![cellfilter](inst/cellFilter.png)
 
 Using this, we can search for lung related cells and export a csv
 
@@ -113,12 +113,12 @@ And plot the current extract in relation to estimated cell viability
  plotCmapDosage(res3)
 ```
 
-![githubViab](https://github.com/user-attachments/assets/c9d3158b-ffc1-4945-9762-22d74c30788d)
+![dosage](/inst/figs/dosageplot.png)
 
 
 ## Extreme Response Demo
 
-We can use the shiny apps above to generate a list of MTOR inhibitors in our data. We can take the csv that comes from the app as an input in our tables and 
+We can use the shiny apps above to generate a list of MTOR inhibitors in our data. We can take the csv that comes from the app as an input in our tables and
 visualizations
 
 ```R
@@ -155,7 +155,7 @@ visualizations
 7  AKCRNFFTGXBONI-UHFFFAOYSA-N          TORIN-1
 8  YEAHTLOYHVWAKW-UHFFFAOYSA-N      PALOMID-529
 9  YEAHTLOYHVWAKW-UHFFFAOYSA-N      PALOMID-529
-10 CZQHHVNHHHRRDU-UHFFFAOYSA-N                 
+10 CZQHHVNHHHRRDU-UHFFFAOYSA-N
 ```
 
 
@@ -179,17 +179,33 @@ extreme=cmapExtreme(cellName="A549",
 save(extreme,file="extreme.rda")
 ```
 
-We can then view a truncated Data table in reference to a perturbagen class extracted above
+We can also view data extracts in terms of identified targets.
 
+Consider the data extract for A375-EGFR presented in the "inst" directory
 
+This file was extracted using the code:
+
+extreme=cmapExtreme(cellName="A549",
+    geneName=gene,
+    sigInfoFile=sigInfoFile,
+    gctxFile=gctxFile,
+    phase=3
+  )
+
+and merged with the metadata from the siginfo file
+
+  extreme=merge(extreme,sigInfo,by="sig_id")
+  fname=paste0("A549-",gene,".rda")
+  save(extreme,file=fname)
 
 ```R
-mtorFile="mtor2024-08-12.csv"
-cmapDT("extreme.rda",mtorFile,inhibit=FALSE,subClass="MTOR",gene="EGFR") 
+mtorFile=paste(path.package("larimaR"),"/mtor2024-08-12.csv",sep="")
+A375File=paste(path.package("larimaR"),"/A549-EGFR.rda",sep="")
+cmapDT(A375File,mtorFile,inhibit=FALSE,subClass="MTOR",gene="EGFR")
 ```
 
 
-![githubextremeDT](https://github.com/user-attachments/assets/7c574b7e-c6ac-4b37-a9d5-f258bafb4d5d)
+![githubextremeDT](inst/figs/extremeDT.png)
 
 
 
@@ -199,11 +215,10 @@ We can also view histograms and boxplots in reference to a perturbagen class ext
 cmapBoxPlot("extreme.rda",mtorFile,gene="EGFR")
 ```
 
-![githubextremeBox](https://github.com/user-attachments/assets/28b9ab96-7734-4d50-84be-61a2306b2306)
+![githubextremeBox](inst/figs/extremeBox.png)
 
 
 ```R
 cmapHistPlot("extreme.rda",mtorFile,gene="EGFR")
 ```
-![githubextremeHist](https://github.com/user-attachments/assets/47500232-28c1-4168-a62e-9fd147b08aa3)
-
+![githubextremeHist](inst/figs/extremeHist.png)
